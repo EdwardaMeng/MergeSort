@@ -21,51 +21,57 @@ public class MergeDriver {
         return array;
     }
     public static void main(String[] args){
-        if(args.length == 0){
-            System.out.println("No Sort Type!");
-        }
-        else if(args.length == 1){
-            if(Objects.equals(args[0], "MS")){
-                MergeSort.sort(generateArray());
+        long start = System.currentTimeMillis();
+        try {
+            if(args.length == 0){
+                System.out.println("No Sort Type!");
             }
-            else if(Objects.equals(args[0], "SMS")){
-                StructuredMergeSort.sort(generateArray());
-            }
-            else{
-                System.out.println("Wrong Sort Type!");
-            }
-        }
-        else if(args.length == 2){
-            if(Objects.equals(args[0], "MS")){
-                MergeSort.sort(generateArrayWithLength(Integer.parseInt(args[1])));
-            }
-            else if(Objects.equals(args[0], "SMS")){
-                StructuredMergeSort.sort(generateArrayWithLength(Integer.parseInt(args[1])));
-
-            }
-            else{
-                System.out.println("Wrong Sort Type!");
-            }
-        }
-        else{
-            if(Objects.equals(args[0], "MS")){
-                int[] array = new int[args.length - 1];
-                for(int i = 0; i < array.length; i++){
-                    array[i] = Integer.parseInt(args[i+1]);
+            else if(args.length == 1){
+                if(Objects.equals(args[0], "MS")){
+                    MergeSort.sort(generateArray());
                 }
-                MergeSort.sort(array);
-            }
-            else if(Objects.equals(args[0], "SMS")){
-                int[] array = new int[args.length - 1];
-                for(int i = 0; i < array.length; i++){
-                    array[i] = Integer.parseInt(args[i+1]);
+                else if(Objects.equals(args[0], "SMS")){
+                    StructuredMergeSort.sort(generateArray());
                 }
-                StructuredMergeSort.sort(array);
+                else{
+                    System.out.println("Wrong Sort Type!");
+                }
+            }
+            else if(args.length == 2){
+                if(Objects.equals(args[0], "MS")){
+                    MergeSort.sort(generateArrayWithLength(Integer.parseInt(args[1])));
+                }
+                else if(Objects.equals(args[0], "SMS")){
+                    StructuredMergeSort.sort(generateArrayWithLength(Integer.parseInt(args[1])));
 
+                }
+                else{
+                    System.out.println("Wrong Sort Type!");
+                }
             }
             else{
-                System.out.println("Wrong Sort Type!");
+                if(Objects.equals(args[0], "MS")){
+                    int[] array = new int[args.length - 1];
+                    for(int i = 0; i < array.length; i++){
+                        array[i] = Integer.parseInt(args[i+1]);
+                    }
+                    MergeSort.sort(array);
+                }
+                else if(Objects.equals(args[0], "SMS")){
+                    int[] array = new int[args.length - 1];
+                    for(int i = 0; i < array.length; i++){
+                        array[i] = Integer.parseInt(args[i+1]);
+                    }
+                    StructuredMergeSort.sort(array);
+
+                }
+                else{
+                    System.out.println("Wrong Sort Type!");
+                }
             }
+        } finally {
+            System.out.println("Completed in " + (System.currentTimeMillis() - start)*1000000 +"ns");
         }
+
     }
 }
